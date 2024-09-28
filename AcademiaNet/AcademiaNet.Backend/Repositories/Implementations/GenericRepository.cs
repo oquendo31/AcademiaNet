@@ -62,7 +62,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 
     private ActionResponse<T> ExceptionActionResponse(Exception exception)
     {
-        return new ActionResponse<t>
+        return new ActionResponse<T>
         {
             WasSuccess = false,
             Message = exception.Message
