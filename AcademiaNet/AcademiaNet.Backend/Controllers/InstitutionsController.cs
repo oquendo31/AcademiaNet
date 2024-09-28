@@ -1,8 +1,6 @@
-﻿using AcademiaNet.Backend.Data;
-using AcademiaNet.Backend.UnitsOfWork.Interfaces;
+﻿using AcademiaNet.Backend.UnitsOfWork.Interfaces;
 using AcademiaNet.Shared.Entites;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Fantasy.Backend.Controllers;
 

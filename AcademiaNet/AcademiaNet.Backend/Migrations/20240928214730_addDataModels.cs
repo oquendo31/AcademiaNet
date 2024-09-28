@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AcademiaNet.Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class addTablesEntitity : Migration
+    public partial class addDataModels : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

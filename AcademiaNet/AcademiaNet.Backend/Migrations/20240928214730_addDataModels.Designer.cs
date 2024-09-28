@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AcademiaNet.Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240928214224_addTablesEntitity")]
-    partial class addTablesEntitity
+    [Migration("20240928214730_addDataModels")]
+    partial class addDataModels
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
