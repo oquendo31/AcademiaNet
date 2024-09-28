@@ -18,9 +18,5 @@ public class Administrator
 
     [MaxLength(100)]
     public string? Description { get; set; } // Permitir null
-
-    public Institution Institution { get; set; } = null!;
-
-    public int InstitutionId { get; set; }
 }
 

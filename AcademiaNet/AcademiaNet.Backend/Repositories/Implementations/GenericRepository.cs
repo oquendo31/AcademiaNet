@@ -3,17 +3,17 @@ using AcademiaNet.Backend.Repositories.Interfaces;
 using AcademiaNet.Shared.Responses;
 using Microsoft.EntityFrameworkCore;
 
-namespace AcademiaNet.Backend.Repositories.Implementations;
+namespace Fantasy.Backend.Repositories.Implementations;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
     private readonly DataContext _context;
     private readonly DbSet<T> _entity;
+
     public GenericRepository(DataContext context)
     {
         _context = context;
         _entity = context.Set<T>();
-
     }
 
     public virtual async Task<ActionResponse<T>> AddAsync(T entity)
@@ -38,31 +38,101 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         }
     }
 
-    
-
     public virtual async Task<ActionResponse<T>> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var row = await _entity.FindAsync(id);
+        if (row == null)
+        {
+            return new ActionResponse<T>
+            {
+                WasSuccess = false,
+                Message = "ERR001"
+            };
+        }
+
+        try
+        {
+            _entity.Remove(row);
+            await _context.SaveChangesAsync();
+            return new ActionResponse<T>
+            {
+                WasSuccess = true,
+            };
+        }
+        catch
+        {
+            return new ActionResponse<T>
+            {
+                WasSuccess = false,
+                Message = "ERR002"
+            };
+        }
     }
 
     public virtual async Task<ActionResponse<T>> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        var row = await _entity.FindAsync(id);
+        if (row != null)
+        {
+            return new ActionResponse<T>
+            {
+                WasSuccess = true,
+                Result = row
+            };
+        }
+        return new ActionResponse<T>
+        {
+            WasSuccess = false,
+            Message = "ERR001"
+        };
     }
 
     public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync()
     {
-        throw new NotImplementedException();
+        return new ActionResponse<IEnumerable<T>>
+        {
+            WasSuccess = true,
+            Result = await _entity.ToListAsync()
+        };
     }
 
     public virtual async Task<ActionResponse<T>> UpdateAsync(T entity)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _context.Update(entity);
+            await _context.SaveChangesAsync();
+            return new ActionResponse<T>
+            {
+                WasSuccess = true,
+                Result = entity
+            };
+        }
+        catch (DbUpdateException)
+        {
+            return DbUpdateExceptionActionResponse();
+        }
+        catch (Exception exception)
+        {
+            return ExceptionActionResponse(exception);
+        }
+    }
+
+
+    public virtual async Task<ActionResponse<int>> GetTotalRecordsAsync()
+    {
+        var queryable = _entity.AsQueryable();
+        double count = await queryable.CountAsync();
+        return new ActionResponse<int>
+        {
+            WasSuccess = true,
+            Result = (int)count
+        };
     }
 
     private ActionResponse<T> ExceptionActionResponse(Exception exception)
     {
-        return new ActionResponse<t>
+        return new ActionResponse<T>
         {
             WasSuccess = false,
             Message = exception.Message
@@ -78,4 +148,3 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         };
     }
 }
-

@@ -16,8 +16,4 @@ public class Institution
 
     [MaxLength(100)]
     public string? Description { get; set; } // Permitir null
-
-    public ICollection<Administrator>? Administrators { get; set; }
-
-    public int administratorCount => Administrators == null ? 0 : Administrators.Count;
 }

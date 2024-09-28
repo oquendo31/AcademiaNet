@@ -18,7 +18,6 @@ public class DataContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Institution>().HasIndex(x => x.Name).IsUnique();
-        modelBuilder.Entity<Administrator>().HasIndex(x => new {x.InstitutionId, x.Name }).IsUnique();
         DisableCascadingDelete(modelBuilder);
 
     }
