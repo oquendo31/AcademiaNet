@@ -50,33 +50,6 @@ namespace AcademiaNet.Backend.Migrations
                     b.ToTable("AcademicPrograms");
                 });
 
-            modelBuilder.Entity("AcademiaNet.Shared.Entites.Administrator", b =>
-                {
-                    b.Property<int>("AdministradorID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdministradorID"));
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("AdministradorID");
-
-                    b.ToTable("Administrators");
-                });
-
             modelBuilder.Entity("AcademiaNet.Shared.Entites.Enrollment", b =>
                 {
                     b.Property<int>("EnrollmentID")
