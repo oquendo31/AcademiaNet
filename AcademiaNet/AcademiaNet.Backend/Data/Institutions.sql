@@ -1,4 +1,4 @@
-﻿INSERT INTO Institution (Name, Location, Description) VALUES
+﻿INSERT INTO Institutions (Name, Location, Description) VALUES
 ('Universidad Nacional de Colombia', 'Bogotá', 'Institución de educación superior pública.'),
 ('Universidad de los Andes', 'Bogotá', 'Universidad privada de alta calidad académica.'),
 ('Universidad del Rosario', 'Bogotá', 'Institución con enfoque humanístico.'),
@@ -15,7 +15,6 @@
 ('Universidad de los Llanos', 'Villavicencio', 'Ofrece programas relacionados con la región.'),
 ('Universidad del Tolima', 'Ibagué', 'Institución con enfoque en la educación técnica.'),
 ('Universidad Autónoma de Bucaramanga', 'Bucaramanga', 'Conocida por su calidad académica.'),
-('Universidad de La Salle', 'Bogotá', 'Institución católica con amplia oferta educativa.'),
 ('Universidad Politécnico Jaime Isaza Cadavid', 'Medellín', 'Enfocada en formación técnica y tecnológica.'),
 ('Universidad de la Costa', 'Barranquilla', 'Famosa por su enfoque en el desarrollo empresarial.'),
 ('Universidad del Atlántico', 'Barranquilla', 'Reconocida por su contribución a la investigación.'),
@@ -32,22 +31,6 @@
 ('Universidad de Pamplona', 'Pamplona', 'Institución con una variada oferta educativa.'),
 ('Universidad del Cauca', 'Popayán', 'Famosa por su historia y tradición académica.'),
 ('Universidad Santo Tomás', 'Tunja', 'Institución con enfoque en valores católicos.'),
-('Universidad de la Sabana', 'Chía', 'Reconocida por su formación integral.'),
-('Universidad de los Andes', 'Bogotá', 'Conocida por su alta calidad académica.'),
 ('Universidad de Medellín', 'Medellín', 'Institución con enfoque en investigación.'),
 ('Universidad de Córdoba', 'Montería', 'Promueve la educación técnica y profesional.'),
-('Universidad de la Guajira', 'Riohacha', 'Famosa por su enfoque en el desarrollo regional.'),
-('Universidad de los Andes', 'Bogotá', 'Conocida por su enfoque en humanidades.'),
-('Universidad de La Salle', 'Bogotá', 'Reconocida por su formación integral.'),
-('Universidad de Antioquia', 'Medellín', 'Institución con un fuerte enfoque investigativo.'),
-('Universidad del Norte', 'Barranquilla', 'Ofrece programas académicos de alta calidad.'),
-('Universidad del Quindío', 'Armenia', 'Famosa por su oferta educativa.'),
-('Universidad del Valle', 'Cali', 'Institución pública de alta calidad.'),
-('Universidad del Tolima', 'Ibagué', 'Promueve la educación técnica.'),
-('Universidad de Caldas', 'Manizales', 'Enfocada en la investigación y desarrollo.'),
-('Universidad San Buenaventura', 'Bogotá', 'Conocida por su enfoque en formación integral.'),
-('Universidad de La Guajira', 'Riohacha', 'Promueve el desarrollo regional.'),
-('Universidad del Atlántico', 'Barranquilla', 'Reconocida por su contribución a la educación.'),
-('Universidad de San Martín', 'Cali', 'Ofrece programas en diversas áreas.'),
-('Universidad EAFIT', 'Medellín', 'Famosa por su enfoque empresarial.'),
-('Universidad Autónoma de Bucaramanga', 'Bucaramanga', 'Reconocida por su calidad educativa.');
+('Universidad de la Guajira', 'Riohacha', 'Famosa por su enfoque en el desarrollo regional.');

@@ -2,7 +2,6 @@
 
 namespace AcademiaNet.Backend.Data
 {
-   
     public class SeedDb
     {
         private readonly DataContext _context;
@@ -15,11 +14,11 @@ namespace AcademiaNet.Backend.Data
         public async Task SeedAsync()
         {
             await _context.Database.EnsureCreatedAsync();
-            await CheckCountriesAsync();
+            await CheckInstitutionsAsync();
             //await CheckTeamsAsync();
         }
 
-        private async Task CheckCountriesAsync()
+        private async Task CheckInstitutionsAsync()
         {
             if (!_context.Institutions.Any())
             {
@@ -48,5 +47,4 @@ namespace AcademiaNet.Backend.Data
         //    }
         //}
     }
-
 }
