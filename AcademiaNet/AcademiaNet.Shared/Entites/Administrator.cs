@@ -1,23 +1,26 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace AcademiaNet.Shared.Entites;
 
-public class Institution
+public class Administrator
 {
     [Key]
-    public int InstitutionID { get; set; }
+    public int AdministradorID { get; set; }
 
     [MaxLength(100)]
     [Required]
     public string Name { get; set; } = null!;
 
     [MaxLength(100)]
-    public string? Location { get; set; } // Permitir null
+    [Required]
+    public string email { get; set; } = null!;
 
     [MaxLength(100)]
     public string? Description { get; set; } // Permitir null
 
-    public ICollection<Administrator>? Administrators { get; set; }
+    public Institution Institution { get; set; } = null!;
 
-    public int administratorCount => Administrators == null ? 0 : Administrators.Count;
+    public int InstitutionId { get; set; }
 }
+
