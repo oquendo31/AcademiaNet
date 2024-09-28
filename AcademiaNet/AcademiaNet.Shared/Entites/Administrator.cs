@@ -19,4 +19,3 @@ public class Administrator
     [MaxLength(100)]
     public string? Description { get; set; } // Permitir null
 }
-
