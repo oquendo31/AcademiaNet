@@ -1,11 +1,12 @@
-﻿INSERT INTO Role (Description) VALUES
+﻿-- Insertar datos en la tabla Role
+INSERT INTO Roles (Description) VALUES
 ('Administrador'),
+('Docente'),
 ('Estudiante'),
-('Profesor'),
-('Coordinador'),
-('Director'),
-('Secretario'),
-('Consejero'),
-('Técnico'),
 ('Investigador'),
-('Asesor');
+('Coordinador'),
+('Técnico'),
+('Asistente'),
+('Supervisor'),
+('Director'),
+('Contador');

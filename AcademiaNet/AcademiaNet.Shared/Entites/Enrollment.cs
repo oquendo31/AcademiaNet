@@ -18,14 +18,16 @@ namespace AcademiaNet.Shared.Entites
         [Required]
         public int UserID { get; set; }
 
-        [Required]
-        public int PeriodID { get; set; }
-
-        [Required]
-        public int ProgramID { get; set; }
-
         public User User { get; set; } = null!;
+
+        [Required]
+        public int EnrollmentPeriodID { get; set; }
+
         public EnrollmentPeriod EnrollmentPeriod { get; set; } = null!;
+
+        [Required]
+        public int AcademicProgramID { get; set; }
+
         public AcademicProgram AcademicProgram { get; set; } = null!;
     }
 }
