@@ -1,4 +1,6 @@
+using System.Text.Json.Serialization;
 using AcademiaNet.Backend.Data;
+using AcademiaNet.Backend.Repositories.Implementations;
 using AcademiaNet.Backend.Repositories.Interfaces;
 using AcademiaNet.Backend.UnitsOfWork.implementations;
 using AcademiaNet.Backend.UnitsOfWork.Interfaces;
@@ -7,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -16,6 +18,9 @@ builder.Services.AddTransient<SeedDb>();
 
 builder.Services.AddScoped(typeof(IGenericUnitOfWork<>), typeof(GenericUnitOfWork<>));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IInstitutionsRepository), typeof(InstitutionsRepository));
+builder.Services.AddScoped(typeof(IInstitutionsUnitOfWork), typeof(InstitutionsUnitOfWork));
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins",
