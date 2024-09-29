@@ -1,11 +1,12 @@
-﻿INSERT INTO AcademicProgram (Name, Category, InstitutionID) VALUES
+﻿-- Insertar datos en la tabla AcademicProgram
+INSERT INTO AcademicPrograms (Name, Category, InstitutionID) VALUES
 ('Ingeniería de Sistemas', 'Ingeniería', 1),
 ('Administración de Empresas', 'Administración', 2),
-('Medicina', 'Salud', 3),
-('Psicología', 'Ciencias Sociales', 4),
-('Derecho', 'Humanidades', 5),
-('Ingeniería Civil', 'Ingeniería', 6),
-('Contaduría Pública', 'Negocios', 7),
-('Diseño Gráfico', 'Arte', 8),
-('Biología', 'Ciencias', 9),
-('Ingeniería Electrónica', 'Ingeniería', 10);
+('Derecho', 'Ciencias Sociales', 3),
+('Medicina', 'Salud', 4),
+('Ingeniería Electrónica', 'Ingeniería', 5),
+('Psicología', 'Ciencias Sociales', 6),
+('Arquitectura', 'Arquitectura', 7),
+('Biología', 'Ciencias Naturales', 8),
+('Ingeniería Industrial', 'Ingeniería', 9),
+('Economía', 'Ciencias Sociales', 10);

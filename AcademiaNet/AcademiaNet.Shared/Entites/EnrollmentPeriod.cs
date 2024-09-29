@@ -10,7 +10,7 @@ namespace AcademiaNet.Shared.Entites
     public class EnrollmentPeriod
     {
         [Key]
-        public int PeriodID { get; set; }
+        public int EnrollmentPeriodID { get; set; }
 
         [MaxLength(100)]
         [Required]
