@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace AcademiaNet.Backend.Controllers;
 [ApiController]
 [Route("api/[controller]")]
-public class EnrollmentPeriods : GenericController<Enrollment>
+public class EnrollmentPeriods : GenericController<EnrollmentPeriod>
 {
-    public EnrollmentPeriods(IGenericUnitOfWork<Enrollment> unitOfWork) : base(unitOfWork)
+    public EnrollmentPeriods(IGenericUnitOfWork<EnrollmentPeriod> unitOfWork) : base(unitOfWork)
     {
     }
 }
