@@ -26,9 +26,12 @@ namespace AcademiaNet.Shared.Entites
 
         //public int PeriodID { get; set; }
         //public EnrollmentPeriod EnrollmentPeriod { get; set; } = null!;
-        public EnrollmentPeriod EnrollmentPeriod { get; set; } = null!;
-
+        [Required]
         public int EnrollmentPeriodID { get; set; }
+
+        public EnrollmentPeriod? EnrollmentPeriod { get; set; }
+
+        //public EnrollmentPeriod EnrollmentPeriod { get; set; } = null!;
 
         public ICollection<ExamResult>? ExamResults { get; set; }
         public int ExamResultsCount => ExamResults == null ? 0 : ExamResults.Count;

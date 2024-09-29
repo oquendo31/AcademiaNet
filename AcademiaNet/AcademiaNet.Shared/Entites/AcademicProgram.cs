@@ -20,8 +20,10 @@ namespace AcademiaNet.Shared.Entites
         [Required]
         public string Category { get; set; } = null!;
 
-        public Institution Institution { get; set; } = null!;
+        [Required]
         public int InstitutionID { get; set; }
+
+        public Institution? Institution { get; set; }
         public ICollection<Enrollment>? Enrollments { get; set; }
         public int EnrollmentsCount => Enrollments == null ? 0 : Enrollments.Count;
         public ICollection<PeriodAcademicProgram>? PeriodAcademicProgramss { get; set; }

@@ -28,8 +28,10 @@ namespace AcademiaNet.Shared.Entites
         [Required]
         public DateTime EndDateExam { get; set; }
 
-        public Institution Institution { get; set; } = null!;
+        [Required]
         public int InstitutionID { get; set; }
+
+        public Institution? Institution { get; set; }
         public ICollection<Exam>? Exams { get; set; }
         public int ExamsCount => Exams == null ? 0 : Exams.Count;
         public ICollection<Enrollment>? Enrollments { get; set; }
