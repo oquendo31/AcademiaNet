@@ -1,8 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AcademiaNet.Shared.Entites;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 
-namespace AcademiaNet.Shared.Entites;
-public class AcademicProgram
+public class AcademicProgramDTO
 {
     [Key]
     public int AcademicProgramID { get; set; }
@@ -24,3 +29,4 @@ public class AcademicProgram
     public ICollection<PeriodAcademicProgram>? PeriodAcademicProgramss { get; set; }
     public int PeriodAcademicProgramssCount => PeriodAcademicProgramss == null ? 0 : PeriodAcademicProgramss.Count;
 }
+
