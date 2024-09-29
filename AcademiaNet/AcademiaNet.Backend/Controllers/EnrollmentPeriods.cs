@@ -4,6 +4,7 @@ using Fantasy.Backend.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AcademiaNet.Backend.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
 public class EnrollmentPeriods : GenericController<EnrollmentPeriod>
@@ -12,4 +13,3 @@ public class EnrollmentPeriods : GenericController<EnrollmentPeriod>
     {
     }
 }
-
