@@ -10,7 +10,7 @@ namespace AcademiaNet.Shared.Entites
     public class ExamResult
     {
         [Key]
-        public int ResultID { get; set; }
+        public int ExamResultID { get; set; }
 
         [Required]
         public int Score { get; set; }

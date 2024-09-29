@@ -24,8 +24,12 @@ namespace AcademiaNet.Shared.Entites
         [Range(1, 100)]
         public int MaxValue { get; set; } = 100;
 
+        //public int PeriodID { get; set; }
+        //public EnrollmentPeriod EnrollmentPeriod { get; set; } = null!;
         public EnrollmentPeriod EnrollmentPeriod { get; set; } = null!;
-        public int PeriodID { get; set; }
+
+        public int EnrollmentPeriodID { get; set; }
+
         public ICollection<ExamResult>? ExamResults { get; set; }
         public int ExamResultsCount => ExamResults == null ? 0 : ExamResults.Count;
     }

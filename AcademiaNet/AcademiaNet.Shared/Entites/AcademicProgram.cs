@@ -10,7 +10,7 @@ namespace AcademiaNet.Shared.Entites
     public class AcademicProgram
     {
         [Key]
-        public int ProgramID { get; set; }
+        public int AcademicProgramID { get; set; }
 
         [MaxLength(100)]
         [Required]
@@ -24,7 +24,7 @@ namespace AcademiaNet.Shared.Entites
         public int InstitutionID { get; set; }
         public ICollection<Enrollment>? Enrollments { get; set; }
         public int EnrollmentsCount => Enrollments == null ? 0 : Enrollments.Count;
-        public ICollection<PeriodAcademicPrograms>? PeriodAcademicProgramss { get; set; }
+        public ICollection<PeriodAcademicProgram>? PeriodAcademicProgramss { get; set; }
         public int PeriodAcademicProgramssCount => PeriodAcademicProgramss == null ? 0 : PeriodAcademicProgramss.Count;
     }
 }

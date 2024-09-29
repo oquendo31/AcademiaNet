@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace AcademiaNet.Shared.Entites
 {
-    public class PeriodAcademicPrograms
+    public class PeriodAcademicProgram
     {
         [Key]
         public int PeriodAcademicProgramID { get; set; }
 
         [Required]
-        public int ProgramID { get; set; }
+        public int AcademicProgramID { get; set; }
 
         public AcademicProgram AcademicProgram { get; set; } = null!;
 
         [Required]
-        public int PeriodID { get; set; }
+        public int EnrollmentPeriodID { get; set; }
 
         public EnrollmentPeriod EnrollmentPeriod { get; set; } = null!;
     }

@@ -1,13 +1,12 @@
-﻿INSERT INTO User (Name, Document, Email, InstitutionID, RoleID) VALUES
-('Juan Pérez', '123456789', 'juan.perez@email.com', 1, 1),
-('Maria Gómez', '987654321', 'maria.gomez@email.com', 2, 2),
-('Luis Martínez', '159753486', 'luis.martinez@email.com', 3, 3),
-('Ana Torres', '753159486', 'ana.torres@email.com', 4, 2),
-('Carlos Rodríguez', '159456123', 'carlos.rodriguez@email.com', 5, 3),
-('Laura Ramírez', '951753852', 'laura.ramirez@email.com', 6, 2),
-('Jorge Pérez', '321654987', 'jorge.perez@email.com', 7, 4),
-('Sofia López', '456789123', 'sofia.lopez@email.com', 8, 3),
-('Andrés Castro', '852741963', 'andres.castro@email.com', 9, 2),
-('Valentina Romero', '123789456', 'valentina.romero@email.com', 10, 2),
--- ... Continúa agregando usuarios hasta llegar a 50
-('Felipe García', '321654789', 'felipe.garcia@email.com', 15, 5);
+﻿-- Insertar datos en la tabla User
+INSERT INTO Users (Name, Document, Email, InstitutionID, RoleID) VALUES
+('Juan Pérez', '123456789', 'juan.perez@uni.edu.co', 1, 3),
+('María Gómez', '987654321', 'maria.gomez@uni.edu.co', 2, 1),
+('Carlos Rodríguez', '111222333', 'carlos.rodriguez@uni.edu.co', 3, 2),
+('Ana Martínez', '444555666', 'ana.martinez@uni.edu.co', 4, 3),
+('Luis Torres', '777888999', 'luis.torres@uni.edu.co', 5, 1),
+('Sofía López', '123123123', 'sofia.lopez@uni.edu.co', 6, 2),
+('David Sánchez', '321321321', 'david.sanchez@uni.edu.co', 7, 3),
+('Laura Ramírez', '456456456', 'laura.ramirez@uni.edu.co', 8, 1),
+('Diego Herrera', '789789789', 'diego.herrera@uni.edu.co', 9, 2),
+('Isabel Castro', '159753468', 'isabel.castro@uni.edu.co', 10, 3);

@@ -19,7 +19,7 @@ public class DataContext : DbContext
     public DbSet<Enrollment> Enrollments { get; set; }
     public DbSet<ExamResult> ExamResults { get; set; }
     public DbSet<Notification> Notifications { get; set; }
-    public DbSet<PeriodAcademicPrograms> PeriodAcademicPrograms { get; set; }
+    public DbSet<PeriodAcademicProgram> PeriodAcademicPrograms { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
