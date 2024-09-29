@@ -16,8 +16,19 @@ builder.Services.AddTransient<SeedDb>();
 
 builder.Services.AddScoped(typeof(IGenericUnitOfWork<>), typeof(GenericUnitOfWork<>));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigins",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:5173") // URL del frontend
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 
 var app = builder.Build();
+app.UseCors("AllowSpecificOrigins");
 SeedData(app);
 
 void SeedData(WebApplication app)
@@ -27,7 +38,6 @@ void SeedData(WebApplication app)
     var service = scope.ServiceProvider.GetService<SeedDb>();
     service!.SeedAsync().Wait();
 }
-
 
 if (app.Environment.IsDevelopment())
 {
