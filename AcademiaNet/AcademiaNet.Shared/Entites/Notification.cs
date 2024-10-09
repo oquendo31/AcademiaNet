@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace AcademiaNet.Shared.Entites;
+
 public class Notification
 {
     [Key]
@@ -11,13 +12,10 @@ public class Notification
 
     public DateTime NotificationDate { get; set; }
 
-    [Required]
-    public int UserID { get; set; }
-
-    public User User { get; set; } = null!;
-
-    [Required]
     public int EnrollmentPeriodID { get; set; }
 
     public EnrollmentPeriod EnrollmentPeriod { get; set; } = null!;
+
+    public string UserId { get; set; } = null!;
+    public User User { get; set; } = null!;
 }

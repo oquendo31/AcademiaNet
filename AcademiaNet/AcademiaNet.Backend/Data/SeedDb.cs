@@ -15,7 +15,7 @@ namespace AcademiaNet.Backend.Data
         {
             await _context.Database.EnsureCreatedAsync();
             await CheckInstitutionsAsync();
-            await CheckRolesAsync();
+            //await CheckRolesAsync();
             await CheckUsersAsync();
             await CheckAcademicProgramsAsync();
             await CheckEnrollmentPeriodsAsync();

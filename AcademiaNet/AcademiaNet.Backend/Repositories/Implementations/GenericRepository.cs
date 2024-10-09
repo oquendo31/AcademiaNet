@@ -118,17 +118,16 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         }
     }
 
-
-    public virtual async Task<ActionResponse<int>> GetTotalRecordsAsync()
-    {
-        var queryable = _entity.AsQueryable();
-        double count = await queryable.CountAsync();
-        return new ActionResponse<int>
-        {
-            WasSuccess = true,
-            Result = (int)count
-        };
-    }
+    //public virtual async Task<ActionResponse<int>> GetTotalRecordsAsync()
+    //{
+    //    var queryable = _entity.AsQueryable();
+    //    double count = await queryable.CountAsyn
+    //    return new ActionResponse<int>
+    //    {
+    //        WasSuccess = true,
+    //        Result = (int)count
+    //    };
+    //}
 
     private ActionResponse<T> ExceptionActionResponse(Exception exception)
     {
