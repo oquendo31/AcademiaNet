@@ -67,17 +67,17 @@ builder.Services.AddScoped<IUsersUnitOfWork, UsersUnitOfWork>();
 
 builder.Services.AddIdentity<User, IdentityRole>(x =>
 {
-    x.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
-    x.SignIn.RequireConfirmedEmail = true;
+    //x.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
+    //x.SignIn.RequireConfirmedEmail = true;
     x.User.RequireUniqueEmail = true;
     x.Password.RequireDigit = false;
     x.Password.RequiredUniqueChars = 0;
     x.Password.RequireLowercase = false;
     x.Password.RequireNonAlphanumeric = false;
     x.Password.RequireUppercase = false;
-    x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // BLoqueo de 5 minutos
-    x.Lockout.MaxFailedAccessAttempts = 3; // Cuando  el usuario ingrese la contaseña mal 3 veces lo bloquemaos 5 minutos
-    x.Lockout.AllowedForNewUsers = true;
+    //x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // BLoqueo de 5 minutos
+    //x.Lockout.MaxFailedAccessAttempts = 3; // Cuando  el usuario ingrese la contaseña mal 3 veces lo bloquemaos 5 minutos
+    //x.Lockout.AllowedForNewUsers = true;
 })
     .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();

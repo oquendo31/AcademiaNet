@@ -22,7 +22,7 @@ namespace AcademiaNet.Backend.Data
             await _context.Database.EnsureCreatedAsync();
             await CheckInstitutionsAsync();
             await CheckRolesAsync();
-            await CheckUserAsync("Juan", "Oquendo", "zulu@yopmail.com", "322 311 4620", UserType.Admin, 19);
+            await CheckUserAsync("Juan", "Oquendo", "felipeoquendo3108@gmail.com", "322 311 4620", UserType.Admin, 19);
 
             //await CheckRolesAsync();
             //await CheckUsersAsync();
