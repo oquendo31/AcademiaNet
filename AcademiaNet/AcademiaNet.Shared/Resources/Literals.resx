@@ -112,4 +112,43 @@
   <data name="UserType" xml:space="preserve">
     <value>UserType</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="LengthFieldField" xml:space="preserve">
+    <value>{0} must be between {2} and {1} characters.</value>
+  </data>
+  <data name="PasswordAndConfirmationDifferent" xml:space="preserve">
+    <value>The password and confirmation are not the same.</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ValidEmail" xml:space="preserve">
+    <value>You must enter a valid email.</value>
+  </data>
+  <data name="MinLength" xml:space="preserve">
+    <value>The {0} field must have at least {1} characters.</value>
+  </data>
+  <data name="ERR006" xml:space="preserve">
+    <value>Incorrect email or password.</value>
+  </data>
+  <data name="PasswordConfirm" xml:space="preserve">
+    <value>Password Confirm</value>
+  </data>
+  <data name="ERR007" xml:space="preserve">
+    <value>You have exceeded the maximum number of attempts, your account is blocked, please try again in 5 minutes.</value>
+  </data>
+  <data name="ERR008" xml:space="preserve">
+    <value>The user has not been enabled, you must follow the instructions in the email sent to enable the user.</value>
+  </data>
+  <data name="ConfirmedEmailMessage" xml:space="preserve">
+    <value>Thank you for confirming your email, you can now log in to the system.</value>
+  </data>
+  <data name="ConfirmEmail" xml:space="preserve">
+    <value>Email confirmation</value>
+  </data>
+  <data name="ConfirmEmailMessage" xml:space="preserve">
+    <value>Press the button to confirm your account.</value>
+  </data>
 </root>

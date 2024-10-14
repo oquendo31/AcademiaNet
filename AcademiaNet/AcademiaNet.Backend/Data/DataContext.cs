@@ -12,9 +12,7 @@ public class DataContext : IdentityDbContext<User>
     }
 
     public DbSet<Institution> Institutions { get; set; }
-    //public DbSet<Role> Roles { get; set; }
 
-    //public DbSet<User> Users { get; set; }
     public DbSet<AcademicProgram> AcademicPrograms { get; set; }
 
     public DbSet<EnrollmentPeriod> EnrollmentPeriods { get; set; }

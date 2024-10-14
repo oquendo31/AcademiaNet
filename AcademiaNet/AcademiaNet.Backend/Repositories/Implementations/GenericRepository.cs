@@ -3,7 +3,7 @@ using AcademiaNet.Backend.Repositories.Interfaces;
 using AcademiaNet.Shared.Responses;
 using Microsoft.EntityFrameworkCore;
 
-namespace Fantasy.Backend.Repositories.Implementations;
+namespace AcademiaNet.Backend.Repositories.Implementations;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {

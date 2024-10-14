@@ -1,15 +1,19 @@
 ﻿using AcademiaNet.Backend.UnitsOfWork.implementations;
 using AcademiaNet.Backend.UnitsOfWork.Interfaces;
 using AcademiaNet.Shared.Entites;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fantasy.Backend.Controllers;
 
 [ApiController]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 public class InstitutionsController : GenericController<Institution>
 {
     private readonly IInstitutionsUnitOfWork _institutionsUnitOfWork;
+
     public InstitutionsController(IGenericUnitOfWork<Institution> unitOfWork, IInstitutionsUnitOfWork institutionsUnitOfWork) : base(unitOfWork)
     {
         _institutionsUnitOfWork = institutionsUnitOfWork;
@@ -42,6 +46,4 @@ public class InstitutionsController : GenericController<Institution>
     {
         return Ok(await _institutionsUnitOfWork.GetComboAsync());
     }
-
-
 }

@@ -1,29 +1,70 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AcademiaNet.Backend.UnitsOfWork.Interfaces;
+using AcademiaNet.Shared.Entites;
+using AcademiaNet.Shared.Enums;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace AcademiaNet.Backend.Data
 {
     public class SeedDb
     {
         private readonly DataContext _context;
+        private readonly IUsersUnitOfWork _usersUnitOfWork;
 
-        public SeedDb(DataContext context)
+        public SeedDb(DataContext context, IUsersUnitOfWork usersUnitOfWork)
         {
             _context = context;
+            _usersUnitOfWork = usersUnitOfWork;
         }
 
         public async Task SeedAsync()
         {
             await _context.Database.EnsureCreatedAsync();
             await CheckInstitutionsAsync();
+            await CheckRolesAsync();
+            await CheckUserAsync("Juan", "Oquendo", "zulu@yopmail.com", "322 311 4620", UserType.Admin, 19);
+
             //await CheckRolesAsync();
-            await CheckUsersAsync();
+            //await CheckUsersAsync();
+
             await CheckAcademicProgramsAsync();
             await CheckEnrollmentPeriodsAsync();
             await CheckExamsAsync();
-            await CheckEnrollmentAsync();
-            await CheckExamResultAsync();
-            await CheckNotificationAsync();
-            await CheckPeriodAcademicProgramsAsync();
+            //await CheckEnrollmentAsync();
+            //await CheckExamResultAsync();
+            //await CheckNotificationAsync();
+            //await CheckPeriodAcademicProgramsAsync();
+        }
+
+        private async Task CheckRolesAsync()
+        {
+            await _usersUnitOfWork.CheckRoleAsync(UserType.Admin.ToString());
+            await _usersUnitOfWork.CheckRoleAsync(UserType.User.ToString());
+        }
+
+        private async Task<User> CheckUserAsync(string firstName, string lastName, string email, string phone, UserType userType, int institutionID)
+        {
+            var user = await _usersUnitOfWork.GetUserAsync(email);
+            if (user == null)
+            {
+                var institution = await _context.Institutions.FirstOrDefaultAsync(x => x.Name == "Itm");
+                user = new User
+                {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Email = email,
+                    UserName = email,
+                    PhoneNumber = phone,
+                    Institution = institution!,
+                    UserType = userType,
+                    InstitutionID = institutionID
+                };
+
+                await _usersUnitOfWork.AddUserAsync(user, "123456");
+                await _usersUnitOfWork.AddUserToRoleAsync(user, userType.ToString());
+            }
+
+            return user;
         }
 
         /// <summary>
@@ -43,28 +84,28 @@ namespace AcademiaNet.Backend.Data
         ///
         /// </summary>
         /// <returns></returns>
-        private async Task CheckRolesAsync()
-        {
-            if (!_context.Roles.Any())
-            {
-                var rolesSQLScript = File.ReadAllText("Data\\Roles.sql");
-                await _context.Database.ExecuteSqlRawAsync(rolesSQLScript);
-            }
-        }
+        //private async Task CheckRolesAsync()
+        //{
+        //    if (!_context.Roles.Any())
+        //    {
+        //        var rolesSQLScript = File.ReadAllText("Data\\Roles.sql");
+        //        await _context.Database.ExecuteSqlRawAsync(rolesSQLScript);
+        //    }
+        //}
 
         /// <summary>
         ///
         /// </summary>
         /// <returns></returns>
 
-        private async Task CheckUsersAsync()
-        {
-            if (!_context.Users.Any())
-            {
-                var usersSQLScript = File.ReadAllText("Data\\Users.sql");
-                await _context.Database.ExecuteSqlRawAsync(usersSQLScript);
-            }
-        }
+        //private async Task CheckUsersAsync()
+        //{
+        //    if (!_context.Users.Any())
+        //    {
+        //        var usersSQLScript = File.ReadAllText("Data\\Users.sql");
+        //        await _context.Database.ExecuteSqlRawAsync(usersSQLScript);
+        //    }
+        //}
 
         /// <summary>
         ///

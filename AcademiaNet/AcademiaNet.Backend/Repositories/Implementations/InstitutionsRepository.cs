@@ -2,7 +2,6 @@
 using AcademiaNet.Backend.Repositories.Interfaces;
 using AcademiaNet.Shared.Entites;
 using AcademiaNet.Shared.Responses;
-using Fantasy.Backend.Repositories.Implementations;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata.Ecma335;
 
@@ -50,6 +49,7 @@ public class InstitutionsRepository : GenericRepository<Institution>, IInstituti
             Result = institutions
         };
     }
+
     public async Task<IEnumerable<Institution>> GetComboAsync()
     {
         return await _context.Institutions
@@ -57,4 +57,3 @@ public class InstitutionsRepository : GenericRepository<Institution>, IInstituti
             .ToListAsync();
     }
 }
-

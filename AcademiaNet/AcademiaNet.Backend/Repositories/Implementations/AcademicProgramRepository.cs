@@ -2,7 +2,6 @@
 using AcademiaNet.Backend.Repositories.Interfaces;
 using AcademiaNet.Shared.Entites;
 using AcademiaNet.Shared.Responses;
-using Fantasy.Backend.Repositories.Implementations;
 
 namespace AcademiaNet.Backend.Repositories.Implementations;
 
@@ -37,4 +36,3 @@ public class AcademicProgramRepository : GenericRepository<AcademicProgram>, IAc
         throw new NotImplementedException();
     }
 }
-

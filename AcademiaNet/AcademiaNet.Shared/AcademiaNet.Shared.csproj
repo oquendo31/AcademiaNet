@@ -25,11 +25,11 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\Literals.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Literals.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Literals.es.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Literals.es.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
