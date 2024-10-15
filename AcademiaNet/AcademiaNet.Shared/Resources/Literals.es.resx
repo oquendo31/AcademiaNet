@@ -151,4 +151,7 @@
   <data name="ConfirmEmailMessage" xml:space="preserve">
     <value>Presione el botón para confirmar su cuenta.</value>
   </data>
+  <data name="Image" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
 </root>

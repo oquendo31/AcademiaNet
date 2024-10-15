@@ -41,6 +41,7 @@ public class InstitutionsController : GenericController<Institution>
         return BadRequest();
     }
 
+    [AllowAnonymous]
     [HttpGet("combo")]
     public async Task<IActionResult> GetComboAsync()
     {
