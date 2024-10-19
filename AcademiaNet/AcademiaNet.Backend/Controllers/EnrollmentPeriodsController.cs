@@ -10,9 +10,9 @@ namespace AcademiaNet.Backend.Controllers;
 [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [ApiController]
 [Route("api/[controller]")]
-public class EnrollmentPeriods : GenericController<EnrollmentPeriod>
+public class EnrollmentPeriodsController : GenericController<EnrollmentPeriod>
 {
-    public EnrollmentPeriods(IGenericUnitOfWork<EnrollmentPeriod> unitOfWork) : base(unitOfWork)
+    public EnrollmentPeriodsController(IGenericUnitOfWork<EnrollmentPeriod> unitOfWork) : base(unitOfWork)
     {
     }
 }
