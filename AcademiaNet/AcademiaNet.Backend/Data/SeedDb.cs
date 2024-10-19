@@ -42,6 +42,17 @@ namespace AcademiaNet.Backend.Data
             await _usersUnitOfWork.CheckRoleAsync(UserType.User.ToString());
         }
 
+        /// <summary>
+        /// Check User Async
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="email"></param>
+        /// <param name="phone"></param>
+        /// <param name="userType"></param>
+        /// <param name="institutionID"></param>
+        /// <returns></returns>
+
         private async Task<User> CheckUserAsync(string firstName, string lastName, string email, string phone, UserType userType, int institutionID)
         {
             var user = await _usersUnitOfWork.GetUserAsync(email);
