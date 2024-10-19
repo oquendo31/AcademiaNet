@@ -31,9 +31,94 @@ public class AccountsController : ControllerBase
         _context = context;
     }
 
+    /// <summary>
+    /// Put Async
+    /// </summary>
+    /// <param name="user"></param>
+    /// <returns></returns>
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpPut]
+    public async Task<IActionResult> PutAsync(User user)
+    {
+        try
+        {
+            var currentUser = await _usersUnitOfWork.GetUserAsync(User.Identity!.Name!);
+            if (currentUser == null)
+            {
+                return NotFound();
+            }
+
+            //Falta implementar el fileStorage
+
+            //if (!string.IsNullOrEmpty(user.Photo))
+            //{
+            //    var photoUser = Convert.FromBase64String(user.Photo);
+            //    user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
+            //}
+
+            currentUser.FirstName = user.FirstName;
+            currentUser.LastName = user.LastName;
+            currentUser.PhoneNumber = user.PhoneNumber;
+            currentUser.Photo = !string.IsNullOrEmpty(user.Photo) && user.Photo != currentUser.Photo ? user.Photo : currentUser.Photo;
+            currentUser.InstitutionID = user.InstitutionID;
+
+            var result = await _usersUnitOfWork.UpdateUserAsync(currentUser);
+            if (result.Succeeded)
+            {
+                return Ok(BuildToken(currentUser));
+            }
+
+            return BadRequest(result.Errors.FirstOrDefault());
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 
     /// <summary>
-    /// 
+    /// Get Async
+    /// </summary>
+    /// <returns></returns>
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpGet]
+    public async Task<IActionResult> GetAsync()
+    {
+        return Ok(await _usersUnitOfWork.GetUserAsync(User.Identity!.Name!));
+    }
+
+    /// <summary>
+    /// Change Password Async
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+
+    [HttpPost("changePassword")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public async Task<IActionResult> ChangePasswordAsync(ChangePasswordDTO model)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var user = await _usersUnitOfWork.GetUserAsync(User.Identity!.Name!);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var result = await _usersUnitOfWork.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+        if (!result.Succeeded)
+        {
+            return BadRequest(result.Errors.FirstOrDefault()!.Description);
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    ///
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
@@ -56,7 +141,6 @@ public class AccountsController : ControllerBase
         return BadRequest(response.Message);
     }
 
-
     /// <summary>
     ///
     /// </summary>
@@ -72,6 +156,15 @@ public class AccountsController : ControllerBase
         }
 
         User user = model;
+
+        //Falta implementar el fileStorage
+
+        //if (!string.IsNullOrEmpty(model.Photo))
+        //{
+        //    var photoUser = Convert.FromBase64String(model.Photo);
+        //    user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
+        //}
+
         user.Institution = institution;
         var result = await _usersUnitOfWork.AddUserAsync(user, model.Password);
         if (result.Succeeded)

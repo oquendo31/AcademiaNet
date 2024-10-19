@@ -79,6 +79,15 @@ namespace AcademiaNet.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thank you for confirming your email, you can now log in to the system..
         /// </summary>
         public static string ConfirmedEmailMessage {
@@ -102,6 +111,15 @@ namespace AcademiaNet.Shared.Resources {
         public static string ConfirmEmailMessage {
             get {
                 return ResourceManager.GetString("ConfirmEmailMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Password.
+        /// </summary>
+        public static string CurrentPassword {
+            get {
+                return ResourceManager.GetString("CurrentPassword", resourceCulture);
             }
         }
         
@@ -205,6 +223,15 @@ namespace AcademiaNet.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NewPassword.
+        /// </summary>
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
@@ -219,6 +246,15 @@ namespace AcademiaNet.Shared.Resources {
         public static string PasswordAndConfirmationDifferent {
             get {
                 return ResourceManager.GetString("PasswordAndConfirmationDifferent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PasswordChangedSuccessfully..
+        /// </summary>
+        public static string PasswordChangedSuccessfully {
+            get {
+                return ResourceManager.GetString("PasswordChangedSuccessfully", resourceCulture);
             }
         }
         

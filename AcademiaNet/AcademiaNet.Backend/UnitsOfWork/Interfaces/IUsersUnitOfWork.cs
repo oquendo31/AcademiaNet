@@ -6,6 +6,23 @@ namespace AcademiaNet.Backend.UnitsOfWork.Interfaces;
 
 public interface IUsersUnitOfWork
 {
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="currentPassword"></param>
+    /// <param name="newPassword"></param>
+    /// <returns></returns>
+    Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword, string newPassword);
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="user"></param>
+    /// <returns></returns>
+
+    Task<IdentityResult> UpdateUserAsync(User user);
+
     Task<User> GetUserAsync(Guid userId);
 
     Task<string> GenerateEmailConfirmationTokenAsync(User user);

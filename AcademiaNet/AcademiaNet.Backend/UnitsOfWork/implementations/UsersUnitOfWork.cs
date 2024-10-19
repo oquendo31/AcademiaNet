@@ -16,6 +16,22 @@ public class UsersUnitOfWork : IUsersUnitOfWork
         _usersRepository = usersRepository;
     }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="currentPassword"></param>
+    /// <param name="newPassword"></param>
+    /// <returns></returns>
+    public async Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword, string newPassword) => await _usersRepository.ChangePasswordAsync(user, currentPassword, newPassword);
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="user"></param>
+    /// <returns></returns>
+    public async Task<IdentityResult> UpdateUserAsync(User user) => await _usersRepository.UpdateUserAsync(user);
+
     public async Task<IdentityResult> AddUserAsync(User user, string password) => await _usersRepository.AddUserAsync(user, password);
 
     public async Task AddUserToRoleAsync(User user, string roleName) => await _usersRepository.AddUserToRoleAsync(user, roleName);
