@@ -169,4 +169,13 @@
   <data name="SendEmailConfirmationMessage" xml:space="preserve">
     <value>Your account has been created successfully. An email has been sent to you with instructions on how to activate your account </value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="MailForwarding" xml:space="preserve">
+    <value>Mail forwarding</value>
+  </data>
+  <data name="ResendAccountActivationEmail" xml:space="preserve">
+    <value>Resend account activation email</value>
+  </data>
 </root>
