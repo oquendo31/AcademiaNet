@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/AcademiaNet/AcademiaNet.Backend/appsettings.json
