@@ -14,5 +14,7 @@ public interface IGenericUnitOfWork<T> where T : class
 
     Task<ActionResponse<T>> UpdateAsync(T entity);
 
+    Task<ActionResponse<int>> GetTotalRecordsAsync();
+
 }
 
