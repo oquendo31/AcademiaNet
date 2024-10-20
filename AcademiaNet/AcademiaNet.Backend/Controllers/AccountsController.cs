@@ -239,15 +239,8 @@ public class AccountsController : ControllerBase
 
         //Falta implementar el fileStorage
 
-        //if (!string.IsNullOrEmpty(model.Photo))
-        //{
-        //    var photoUser = Convert.FromBase64String(model.Photo);
-        //    user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
-        //}
-
         if (!string.IsNullOrEmpty(model.Photo))
         {
-          
             // Remueve el prefijo 'data:image/png;base64,' si está presente
             var base64Data = model.Photo.Substring(model.Photo.IndexOf(',') + 1);
 
@@ -256,9 +249,7 @@ public class AccountsController : ControllerBase
 
             // Aquí puedes continuar procesando photoUser
             user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
-            
         }
-
 
         user.Institution = institution;
         var result = await _usersUnitOfWork.AddUserAsync(user, model.Password);
