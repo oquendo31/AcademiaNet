@@ -20,6 +20,23 @@ public class UsersUnitOfWork : IUsersUnitOfWork
     ///
     /// </summary>
     /// <param name="user"></param>
+    /// <returns></returns>
+    public async Task<string> GeneratePasswordResetTokenAsync(User user) => await _usersRepository.GeneratePasswordResetTokenAsync(user);
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="token"></param>
+    /// <param name="password"></param>
+    /// <returns></returns>
+
+    public async Task<IdentityResult> ResetPasswordAsync(User user, string token, string password) => await _usersRepository.ResetPasswordAsync(user, token, password);
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="user"></param>
     /// <param name="currentPassword"></param>
     /// <param name="newPassword"></param>
     /// <returns></returns>
