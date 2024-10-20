@@ -132,7 +132,13 @@ public class AccountsController : ControllerBase
 
             if (!string.IsNullOrEmpty(user.Photo))
             {
-                var photoUser = Convert.FromBase64String(user.Photo);
+                // Remueve el prefijo 'data:image/png;base64,' si está presente
+                var base64Data = user.Photo.Substring(user.Photo.IndexOf(',') + 1);
+
+                // Convierte el string base64 en bytes
+                var photoUser = Convert.FromBase64String(base64Data);
+
+                // Aquí puedes continuar procesando photoUser
                 user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
             }
 
@@ -241,7 +247,6 @@ public class AccountsController : ControllerBase
 
         if (!string.IsNullOrEmpty(model.Photo))
         {
-          
             // Remueve el prefijo 'data:image/png;base64,' si está presente
             var base64Data = model.Photo.Substring(model.Photo.IndexOf(',') + 1);
 
@@ -250,7 +255,6 @@ public class AccountsController : ControllerBase
 
             // Aquí puedes continuar procesando photoUser
             user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
-            
         }
 
         user.Institution = institution;
