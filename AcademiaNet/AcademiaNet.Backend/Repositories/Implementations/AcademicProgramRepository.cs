@@ -3,7 +3,6 @@ using AcademiaNet.Backend.Data;
 using AcademiaNet.Backend.Repositories.Interfaces;
 using AcademiaNet.Shared.Entites;
 using AcademiaNet.Shared.Responses;
-using Fantasy.Backend.Repositories.Implementations;
 using Microsoft.EntityFrameworkCore;
 
 namespace AcademiaNet.Backend.Repositories.Implementations;
