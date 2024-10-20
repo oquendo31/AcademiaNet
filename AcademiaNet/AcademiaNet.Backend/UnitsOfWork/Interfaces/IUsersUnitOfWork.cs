@@ -10,6 +10,23 @@ public interface IUsersUnitOfWork
     ///
     /// </summary>
     /// <param name="user"></param>
+    /// <returns></returns>
+    Task<string> GeneratePasswordResetTokenAsync(User user);
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="token"></param>
+    /// <param name="password"></param>
+    /// <returns></returns>
+
+    Task<IdentityResult> ResetPasswordAsync(User user, string token, string password);
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="user"></param>
     /// <param name="currentPassword"></param>
     /// <param name="newPassword"></param>
     /// <returns></returns>

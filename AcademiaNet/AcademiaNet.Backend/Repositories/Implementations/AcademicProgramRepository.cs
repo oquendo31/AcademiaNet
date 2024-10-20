@@ -10,10 +10,12 @@ namespace AcademiaNet.Backend.Repositories.Implementations;
 public class AcademicProgramRepository : GenericRepository<AcademicProgram>, IAcademicprogramsRepository
 {
     private readonly DataContext _context;
+
     public AcademicProgramRepository(DataContext context) : base(context)
     {
         _context = context;
     }
+
     public async Task<IEnumerable<AcademicProgram>> GetComboAsync()
     {
         return await _context.AcademicPrograms
@@ -21,7 +23,7 @@ public class AcademicProgramRepository : GenericRepository<AcademicProgram>, IAc
             .ToListAsync();
     }
 
-    public async override Task<ActionResponse<IEnumerable<AcademicProgram>>> GetAsync()
+    public override async Task<ActionResponse<IEnumerable<AcademicProgram>>> GetAsync()
     {
         var academicprograms = await _context.AcademicPrograms
             .Include(x => x.Name)
