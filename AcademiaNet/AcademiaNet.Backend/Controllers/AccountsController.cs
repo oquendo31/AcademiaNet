@@ -30,7 +30,7 @@ public class AccountsController : ControllerBase
         _configuration = configuration;
         _mailHelper = mailHelper;
         _context = context;
-        _fileStorage = fileStorage; 
+        _fileStorage = fileStorage;
     }
 
     /// <summary>
@@ -241,8 +241,16 @@ public class AccountsController : ControllerBase
 
         if (!string.IsNullOrEmpty(model.Photo))
         {
-            var photoUser = Convert.FromBase64String(model.Photo);
+          
+            // Remueve el prefijo 'data:image/png;base64,' si está presente
+            var base64Data = model.Photo.Substring(model.Photo.IndexOf(',') + 1);
+
+            // Convierte el string base64 en bytes
+            var photoUser = Convert.FromBase64String(base64Data);
+
+            // Aquí puedes continuar procesando photoUser
             user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
+            
         }
 
         user.Institution = institution;
