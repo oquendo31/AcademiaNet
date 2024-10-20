@@ -34,7 +34,7 @@ public class AccountsController : ControllerBase
     }
 
     /// <summary>
-    ///
+    /// Recover Password Async
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
@@ -58,7 +58,7 @@ public class AccountsController : ControllerBase
     }
 
     /// <summary>
-    ///
+    /// Reset Password Async
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
@@ -83,7 +83,7 @@ public class AccountsController : ControllerBase
     }
 
     /// <summary>
-    ///
+    /// Send Recover Email Async
     /// </summary>
     /// <param name="user"></param>
     /// <param name="language"></param>
@@ -96,7 +96,13 @@ public class AccountsController : ControllerBase
         {
             userid = user.Id,
             token = myToken
-        }, HttpContext.Request.Scheme, _configuration["Url Frontend"]);
+        }, "http", _configuration["Url Frontend"]);
+
+        //var tokenLink = Url.Action("ResetPassword", "accounts", new
+        //{
+        //    userid = user.Id,
+        //    token = myToken
+        //}, HttpContext.Request.Scheme, _configuration["Url Frontend"]);
 
         if (language == "es")
         {
@@ -192,7 +198,7 @@ public class AccountsController : ControllerBase
     }
 
     /// <summary>
-    ///
+    /// Resed Token Async
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
@@ -257,7 +263,7 @@ public class AccountsController : ControllerBase
     }
 
     /// <summary>
-    ///
+    /// Confirm Emai lAsync
     /// </summary>
     /// <param name="userId"></param>
     /// <param name="token"></param>
@@ -325,7 +331,7 @@ public class AccountsController : ControllerBase
         {
             userid = user.Id,
             token = myToken
-        }, HttpContext.Request.Scheme, _configuration["Url Frontend"]);
+        }, "http", _configuration["Url Frontend"]);
 
         if (language == "es")
         {
