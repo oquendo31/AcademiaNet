@@ -5,10 +5,10 @@ using AcademiaNet.Shared.Responses;
 
 namespace AcademiaNet.Backend.UnitsOfWork.implementations;
 
-public class AcademicaProgramsUnitOfWork : GenericUnitOfWork<AcademicProgram>, IAcademicProgramsUnitOfWorks
+public class AcademicProgramsUnitOfWork : GenericUnitOfWork<AcademicProgram>, IAcademicProgramsUnitOfWorks
 {
     private readonly IAcademicprogramsRepository _AcademicprogramsRepository;
-    public AcademicaProgramsUnitOfWork(IGenericRepository<AcademicProgram> repository, IAcademicprogramsRepository AcademicprogramsRepository) : base(repository)
+    public AcademicProgramsUnitOfWork(IGenericRepository<AcademicProgram> repository, IAcademicprogramsRepository AcademicprogramsRepository) : base(repository)
     {
         _AcademicprogramsRepository  = AcademicprogramsRepository;
     }

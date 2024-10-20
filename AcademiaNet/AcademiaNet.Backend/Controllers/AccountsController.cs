@@ -247,14 +247,16 @@ public class AccountsController : ControllerBase
 
         if (!string.IsNullOrEmpty(model.Photo))
         {
-            // Elimina el prefijo "data:image/png;base64," si está presente
-            var base64Data = model.Photo.Replace("data:image/png;base64,", "");
+          
+            // Remueve el prefijo 'data:image/png;base64,' si está presente
+            var base64Data = model.Photo.Substring(model.Photo.IndexOf(',') + 1);
 
-            // Convierte la cadena base64 a un array de bytes
+            // Convierte el string base64 en bytes
             var photoUser = Convert.FromBase64String(base64Data);
 
-            // Guarda la foto en el almacenamiento
+            // Aquí puedes continuar procesando photoUser
             user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
+            
         }
 
 
