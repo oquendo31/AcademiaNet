@@ -22,13 +22,15 @@ public class AccountsController : ControllerBase
     private readonly IConfiguration _configuration;
     private readonly IMailHelper _mailHelper;
     private readonly DataContext _context;
+    private readonly IFileStorage _fileStorage;
 
-    public AccountsController(IUsersUnitOfWork usersUnitOfWork, IConfiguration configuration, IMailHelper mailHelper, DataContext context)
+    public AccountsController(IUsersUnitOfWork usersUnitOfWork, IConfiguration configuration, IMailHelper mailHelper, DataContext context, IFileStorage fileStorage)
     {
         _usersUnitOfWork = usersUnitOfWork;
         _configuration = configuration;
         _mailHelper = mailHelper;
         _context = context;
+        _fileStorage = fileStorage; 
     }
 
     /// <summary>
@@ -128,11 +130,11 @@ public class AccountsController : ControllerBase
 
             //Falta implementar el fileStorage
 
-            //if (!string.IsNullOrEmpty(user.Photo))
-            //{
-            //    var photoUser = Convert.FromBase64String(user.Photo);
-            //    user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
-            //}
+            if (!string.IsNullOrEmpty(user.Photo))
+            {
+                var photoUser = Convert.FromBase64String(user.Photo);
+                user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
+            }
 
             currentUser.FirstName = user.FirstName;
             currentUser.LastName = user.LastName;
@@ -237,11 +239,11 @@ public class AccountsController : ControllerBase
 
         //Falta implementar el fileStorage
 
-        //if (!string.IsNullOrEmpty(model.Photo))
-        //{
-        //    var photoUser = Convert.FromBase64String(model.Photo);
-        //    user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
-        //}
+        if (!string.IsNullOrEmpty(model.Photo))
+        {
+            var photoUser = Convert.FromBase64String(model.Photo);
+            user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
+        }
 
         user.Institution = institution;
         var result = await _usersUnitOfWork.AddUserAsync(user, model.Password);
