@@ -10,4 +10,4 @@ public static class QueryableExtensions
             .Skip((pagination.Page - 1) * pagination.RecordsNumber)
             .Take(pagination.RecordsNumber);
     }
-}s
+}

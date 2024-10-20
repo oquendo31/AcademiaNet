@@ -1,5 +1,6 @@
 ﻿using AcademiaNet.Backend.Repositories.Interfaces;
 using AcademiaNet.Backend.UnitsOfWork.Interfaces;
+using AcademiaNet.Shared.DTOs;
 using AcademiaNet.Shared.Responses;
 
 namespace AcademiaNet.Backend.UnitsOfWork.implementations;
@@ -19,6 +20,16 @@ public class GenericUnitOfWork<T> : IGenericUnitOfWork<T> where T : class
     public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync() => await _repository.GetAsync();
 
     public virtual async Task<ActionResponse<T>> GetAsync(int id) => await _repository.GetAsync(id);
+
+    public Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<ActionResponse<int>> GetTotalRecordsAsync()
+    {
+        throw new NotImplementedException();
+    }
 
     public virtual async Task<ActionResponse<T>> UpdateAsync(T model) => await _repository.UpdateAsync(model);
 
