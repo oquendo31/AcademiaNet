@@ -19,18 +19,20 @@ namespace AcademiaNet.Backend.Controllers;
 public class AccountsController : ControllerBase
 {
     private readonly IUsersUnitOfWork _usersUnitOfWork;
+    private readonly IInstitutionsUnitOfWork _InstitutionsUnitOfWork;
     private readonly IConfiguration _configuration;
     private readonly IMailHelper _mailHelper;
     private readonly DataContext _context;
     private readonly IFileStorage _fileStorage;
 
-    public AccountsController(IUsersUnitOfWork usersUnitOfWork, IConfiguration configuration, IMailHelper mailHelper, DataContext context, IFileStorage fileStorage)
+    public AccountsController(IUsersUnitOfWork usersUnitOfWork, IConfiguration configuration, IMailHelper mailHelper, DataContext context, IFileStorage fileStorage, IInstitutionsUnitOfWork InstitutionsUnitOfWork)
     {
         _usersUnitOfWork = usersUnitOfWork;
         _configuration = configuration;
         _mailHelper = mailHelper;
         _context = context;
         _fileStorage = fileStorage;
+        _InstitutionsUnitOfWork = InstitutionsUnitOfWork;
     }
 
     /// <summary>
@@ -235,11 +237,9 @@ public class AccountsController : ControllerBase
     [HttpPost("CreateUser")]
     public async Task<IActionResult> CreateUser([FromBody] UserDTO model)
     {
-        var institution = await _context.Institutions.FindAsync(model.InstitutionID);
-        if (institution == null)
-        {
-            return BadRequest("ERR004");
-        }
+        var a = model.Institution;
+
+        var Institution = await _InstitutionsUnitOfWork.AddInstitutionAsync(a);
 
         User user = model;
 
@@ -257,7 +257,7 @@ public class AccountsController : ControllerBase
             user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
         }
 
-        user.Institution = institution;
+        user.Institution.InstitutionID = Institution.InstitutionID;
         var result = await _usersUnitOfWork.AddUserAsync(user, model.Password);
         if (result.Succeeded)
         {

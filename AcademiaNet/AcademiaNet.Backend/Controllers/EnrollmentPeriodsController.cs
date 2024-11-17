@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AcademiaNet.Backend.Controllers;
 
-[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [ApiController]
 [Route("api/[controller]")]
 public class EnrollmentPeriodsController : GenericController<EnrollmentPeriod>
@@ -16,3 +16,5 @@ public class EnrollmentPeriodsController : GenericController<EnrollmentPeriod>
     {
     }
 }
+
+

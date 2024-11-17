@@ -4,11 +4,12 @@ using AcademiaNet.Shared.Entites;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace Fantasy.Backend.Controllers;
 
 [ApiController]
-[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 public class InstitutionsController : GenericController<Institution>
 {
@@ -34,6 +35,7 @@ public class InstitutionsController : GenericController<Institution>
     public override async Task<IActionResult> GetAsync(int id)
     {
         var response = await _institutionsUnitOfWork.GetAsync(id);
+        
         if (response.WasSuccess)
         {
             return Ok(response.Result);

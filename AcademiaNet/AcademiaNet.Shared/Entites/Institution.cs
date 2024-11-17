@@ -19,11 +19,5 @@ public class Institution
 
     public ICollection<User>? Users { get; set; }
     public int UsersCount => Users == null ? 0 : Users.Count;
-    public ICollection<AcademicProgram>? AcademicPrograms { get; set; }
-    public int AcademicProgramCount => AcademicPrograms == null ? 0 : AcademicPrograms.Count;
 
-    public static implicit operator string(Institution v)
-    {
-        throw new NotImplementedException();
-    }
 }
