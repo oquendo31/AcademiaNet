@@ -1,6 +1,5 @@
 ﻿-- Insertar datos en la tabla EnrollmentPeriod
 INSERT INTO EnrollmentPeriods (PeriodName, StartDateEnrollment, EndDateEnrollment, StartDateExam, EndDateExam, InstitutionID) VALUES
-INSERT INTO EnrollmentPeriods (PeriodName, StartDateEnrollment, EndDateEnrollment, StartDateExam, EndDateExam, InstitutionID) VALUES
 ('Periodo 2023-1', '2023-01-01', '2023-01-15', '2023-02-01', '2023-02-15', 11),
 ('Periodo 2023-2', '2023-07-01', '2023-07-15', '2023-08-01', '2023-08-15', 12),
 ('Periodo 2023-1', '2023-01-01', '2023-01-15', '2023-02-01', '2023-02-15', 13),
