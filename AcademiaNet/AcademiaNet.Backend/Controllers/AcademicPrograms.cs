@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AcademiaNet.Backend.Controllers;
 
 [ApiController]
-[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 public class AcademicPrograms : GenericController<AcademicProgram>
 {
