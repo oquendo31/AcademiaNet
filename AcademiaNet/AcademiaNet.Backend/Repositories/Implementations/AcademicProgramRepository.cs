@@ -69,4 +69,11 @@ public class AcademicProgramRepository : GenericRepository<AcademicProgram>, IAc
     {
         throw new NotImplementedException();
     }
+
+    public async Task<IEnumerable<AcademicProgram>> GetByInstitutionAsync(int institutionID)
+    {
+        return await _context.AcademicPrograms
+            .Where(ap => ap.InstitutionID == institutionID)
+            .ToListAsync();
+    }
 }

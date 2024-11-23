@@ -45,5 +45,18 @@ public class AcademicPrograms : GenericController<AcademicProgram>
         }
         return NotFound(response.Message);
     }
-    
+
+    [HttpGet("institution/{institutionId}")]
+    public async Task<IActionResult> GetByInstitutionAsync(int institutionId)
+    {
+        var academicPrograms = await _AcademicProgramsUnitOfWorks.GetByInstitutionAsync(institutionId);
+
+        if (academicPrograms == null || !academicPrograms.Any())
+        {
+            return NotFound("No academic programs found for the given institution.");
+        }
+
+        return Ok(academicPrograms);
+    }
+
 }
