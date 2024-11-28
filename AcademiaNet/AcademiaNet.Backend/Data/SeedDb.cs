@@ -28,8 +28,8 @@ namespace AcademiaNet.Backend.Data
             //await CheckUsersAsync();
 
             await CheckAcademicProgramsAsync();
-            await CheckEnrollmentPeriodsAsync();
-            await CheckExamsAsync();
+            //await CheckEnrollmentPeriodsAsync();
+            //await CheckExamsAsync();
             //await CheckEnrollmentAsync();
             //await CheckExamResultAsync();
             //await CheckNotificationAsync();
@@ -138,14 +138,14 @@ namespace AcademiaNet.Backend.Data
         ///
         /// </summary>
         /// <returns></returns>
-        private async Task CheckEnrollmentPeriodsAsync()
-        {
-            if (!_context.EnrollmentPeriods.Any())
-            {
-                var enrollmentPeriodsSQLScript = File.ReadAllText("Data\\EnrollmentPeriods.sql");
-                await _context.Database.ExecuteSqlRawAsync(enrollmentPeriodsSQLScript);
-            }
-        }
+        //private async Task CheckEnrollmentPeriodsAsync()
+        //{
+        //    if (!_context.EnrollmentPeriods.Any())
+        //    {
+        //        var enrollmentPeriodsSQLScript = File.ReadAllText("Data\\EnrollmentPeriods.sql");
+        //        await _context.Database.ExecuteSqlRawAsync(enrollmentPeriodsSQLScript);
+        //    }
+        //}
 
         /// <summary>
         ///

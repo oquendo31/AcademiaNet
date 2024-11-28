@@ -17,6 +17,7 @@ public class InstitutionsUnitOfWork : GenericUnitOfWork<Institution>, IInstituti
     }
 
     public async Task<Institution> AddInstitutionAsync(Institution user) => await _institutionsRepositories.AddInstitutionAsync(user);
+
     public override async Task<ActionResponse<IEnumerable<Institution>>> GetAsync() => await _institutionsRepositories.GetAsync();
 
     public override async Task<ActionResponse<Institution>> GetAsync(int id) => await _institutionsRepositories.GetAsync(id);

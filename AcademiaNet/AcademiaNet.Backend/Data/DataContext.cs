@@ -21,6 +21,8 @@ public class DataContext : IdentityDbContext<User>
     public DbSet<ExamResult> ExamResults { get; set; }
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<PeriodAcademicProgram> PeriodAcademicPrograms { get; set; }
+    public DbSet<Question> Questions { get; set; }
+    public DbSet<Answer> Answers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace AcademiaNet.Shared.Entites;
+
 public class Exam
 {
     [Key]
@@ -8,24 +9,23 @@ public class Exam
 
     [MaxLength(255)]
     [Required]
-    public string Question { get; set; } = null!;
+    public string Title { get; set; } = null!;
 
-    [Required]
-    [Range(1, 100)]
-    public int MinValue { get; set; } = 1;
+    //[Required]
+    //[Range(1, 100)]
+    //public int MinValue { get; set; } = 1;
 
-    [Required]
-    [Range(1, 100)]
-    public int MaxValue { get; set; } = 100;
+    //[Required]
+    //[Range(1, 100)]
+    //public int MaxValue { get; set; } = 100;
 
-    //public int PeriodID { get; set; }
-    //public EnrollmentPeriod EnrollmentPeriod { get; set; } = null!;
     [Required]
     public int EnrollmentPeriodID { get; set; }
 
     public EnrollmentPeriod? EnrollmentPeriod { get; set; }
 
-    //public EnrollmentPeriod EnrollmentPeriod { get; set; } = null!;
+    // Relación con preguntas
+    public ICollection<Question> Questions { get; set; } = new List<Question>();
 
     public ICollection<ExamResult>? ExamResults { get; set; }
     public int ExamResultsCount => ExamResults == null ? 0 : ExamResults.Count;
