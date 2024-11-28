@@ -65,12 +65,15 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped<IApplicantUnitOfWork, AppliclantUnitOfWork>();
 builder.Services.AddScoped<IApplicantReposetory, ApplicantReposetory>();
 
+builder.Services.AddScoped<IEnrollmentUnitOfWork, EnrollmentUnitOfWork>();
+builder.Services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
 
 builder.Services.AddScoped(typeof(IInstitutionsRepository), typeof(InstitutionsRepository));
 builder.Services.AddScoped(typeof(IInstitutionsUnitOfWork), typeof(InstitutionsUnitOfWork));
 
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IUsersUnitOfWork, UsersUnitOfWork>();
+
 
 builder.Services.AddScoped<IExamsRepository, ExamsRepository>();
 builder.Services.AddScoped<IExamsUnitOfWorks, ExamsUnitOfWork>();
