@@ -62,6 +62,10 @@ builder.Services.AddScoped<IAcademicprogramsRepository, AcademicProgramRepositor
 builder.Services.AddScoped(typeof(IGenericUnitOfWork<>), typeof(GenericUnitOfWork<>));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+builder.Services.AddScoped<IApplicantUnitOfWork, AppliclantUnitOfWork>();
+builder.Services.AddScoped<IApplicantReposetory, ApplicantReposetory>();
+
+
 builder.Services.AddScoped(typeof(IInstitutionsRepository), typeof(InstitutionsRepository));
 builder.Services.AddScoped(typeof(IInstitutionsUnitOfWork), typeof(InstitutionsUnitOfWork));
 

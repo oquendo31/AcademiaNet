@@ -41,8 +41,19 @@ public class InstitutionsRepository : GenericRepository<Institution>, IInstituti
 
     public override async Task<ActionResponse<IEnumerable<Institution>>> GetAsync()
     {
+        var currentDate = DateTime.Now;
+
         var institutions = await _context.Institutions
+            .Join(_context.EnrollmentPeriods,
+                  institution => institution.InstitutionID,
+                  enrollmentPeriod => enrollmentPeriod.InstitutionID,
+                  (institution, enrollmentPeriod) => new { institution, enrollmentPeriod })
+            .Where(x => currentDate >= x.enrollmentPeriod.StartDateEnrollment &&
+                        currentDate <= x.enrollmentPeriod.EndDateEnrollment)
+            .Select(x => x.institution)
+            .Distinct()
             .ToListAsync();
+
         return new ActionResponse<IEnumerable<Institution>>
         {
             WasSuccess = true,

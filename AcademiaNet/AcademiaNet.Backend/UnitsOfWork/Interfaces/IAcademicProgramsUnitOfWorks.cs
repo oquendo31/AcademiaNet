@@ -10,5 +10,6 @@ public interface IAcademicProgramsUnitOfWorks
     Task<ActionResponse<AcademicProgram>> UpdateAsync(AcademicProgram academicprogramDTO);
     Task<ActionResponse<AcademicProgram>> GetAsync(int id);
     Task<ActionResponse<IEnumerable<AcademicProgram>>> GetAsync();
+    Task<IEnumerable<AcademicProgram>> GetByInstitutionAsync(int institutionID);
 }
 

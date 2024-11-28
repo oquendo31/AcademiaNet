@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AcademiaNet.Backend.Controllers;
 
 [ApiController]
-[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 public class AcademicPrograms : GenericController<AcademicProgram>
 {
@@ -18,7 +18,7 @@ public class AcademicPrograms : GenericController<AcademicProgram>
     public AcademicPrograms(IGenericUnitOfWork<AcademicProgram> unitOfWork, IAcademicProgramsUnitOfWorks AcademicProgramsUnitOfWorks) : base(unitOfWork)
     {
         _AcademicProgramsUnitOfWorks = AcademicProgramsUnitOfWorks;
-}
+    }
 
     [HttpGet("combo")]
     public async Task<IActionResult> GetComboAsync()
@@ -45,5 +45,18 @@ public class AcademicPrograms : GenericController<AcademicProgram>
         }
         return NotFound(response.Message);
     }
-    
+
+    [HttpGet("institution/{institutionId}")]
+    public async Task<IActionResult> GetByInstitutionAsync(int institutionId)
+    {
+        var academicPrograms = await _AcademicProgramsUnitOfWorks.GetByInstitutionAsync(institutionId);
+
+        if (academicPrograms == null || !academicPrograms.Any())
+        {
+            return NotFound("No academic programs found for the given institution.");
+        }
+
+        return Ok(academicPrograms);
+    }
+
 }

@@ -19,6 +19,7 @@ public class DataContext : IdentityDbContext<User>
     public DbSet<Exam> Exams { get; set; }
     public DbSet<Enrollment> Enrollments { get; set; }
     public DbSet<ExamResult> ExamResults { get; set; }
+    public DbSet<Applicant> Applicant { get; set; }
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<PeriodAcademicProgram> PeriodAcademicPrograms { get; set; }
     public DbSet<Question> Questions { get; set; }

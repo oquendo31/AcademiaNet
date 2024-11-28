@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AcademiaNet.Shared.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace AcademiaNet.Shared.Entites;
 
@@ -16,6 +17,9 @@ public class Institution
 
     [MaxLength(100)]
     public string? Description { get; set; } // Permitir null
+
+    [Display(Name = "Image", ResourceType = typeof(Literals))]
+    public string? Photo { get; set; }
 
     public ICollection<User>? Users { get; set; }
     public int UsersCount => Users == null ? 0 : Users.Count;
