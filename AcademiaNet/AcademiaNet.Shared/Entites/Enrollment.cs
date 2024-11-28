@@ -17,9 +17,7 @@ public class Enrollment
 
     [Required]
     public int AcademicProgramID { get; set; }
-
     public AcademicProgram AcademicProgram { get; set; } = null!;
-
-    public string UserId { get; set; } = null!;
-    public User User { get; set; } = null!;
+    public int ApplicantId { get; set; }
+    public Applicant Applicant { get; set; } = null!;
 }

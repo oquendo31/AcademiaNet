@@ -18,7 +18,7 @@ public class AcademicPrograms : GenericController<AcademicProgram>
     public AcademicPrograms(IGenericUnitOfWork<AcademicProgram> unitOfWork, IAcademicProgramsUnitOfWorks AcademicProgramsUnitOfWorks) : base(unitOfWork)
     {
         _AcademicProgramsUnitOfWorks = AcademicProgramsUnitOfWorks;
-}
+    }
 
     [HttpGet("combo")]
     public async Task<IActionResult> GetComboAsync()

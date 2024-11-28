@@ -29,3 +29,18 @@ public class ResetPasswordDTO
 
     public string Token { get; set; } = null!;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
