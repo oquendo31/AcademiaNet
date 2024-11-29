@@ -26,5 +26,18 @@ public class Enrollments: GenericController<Enrollment>
         }
         return NotFound(response.Message);
     }
+
+    [HttpPost("validate")]
+    public async Task<IActionResult> PostEnrollment([FromBody] Enrollment enrollment)
+    {
+        if (await _EnrollmentUnitOfWork.EnrollmentExistsAsync(enrollment.Applicant.DocumentNumber!, enrollment.AcademicProgramID))
+        {
+            return Conflict(new { message = "Enrollment already exists for the given applicant document and program." });
+        }
+
+        var createdEnrollment = await _EnrollmentUnitOfWork.AddEnrollmentAsync(enrollment);
+        return CreatedAtAction(nameof(GetAsync), new { id = createdEnrollment.EnrollmentID }, createdEnrollment);
+    }
+
 }
 

@@ -19,5 +19,11 @@ public class EnrollmentUnitOfWork: GenericUnitOfWork<Enrollment>, IEnrollmentUni
     public override async Task<ActionResponse<Enrollment>> GetAsync(int id) => await _EnrollmentRepository.GetAsync(id);
 
     public async Task<IEnumerable<Enrollment>> GetComboAsync() => await _EnrollmentRepository.GetComboAsync();
+
+    public async Task<bool> EnrollmentExistsAsync(string documentNumber, int academicProgramId)
+    {
+        return await _EnrollmentRepository.EnrollmentExistsAsync(documentNumber, academicProgramId);
+    }
+
 }
 
