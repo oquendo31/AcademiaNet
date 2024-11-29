@@ -49,4 +49,29 @@ public class EnrollmentRepository: GenericRepository<Enrollment>, IEnrollmentRep
         return entityEntry.Entity;
     }
 
+    public async Task<bool> EnrollmentExistsAsync(string documentNumber, int academicProgramId)
+    {
+        return await _context.Enrollments
+            .Include(e => e.Applicant)
+            .AnyAsync(e => e.Applicant.DocumentNumber == documentNumber && e.AcademicProgramID == academicProgramId);
+    }
+
+    public async Task<bool> ApplicantHasEnrollmentInProgramAsync(string documentNumber, int academicProgramId)
+    {
+        return await _context.Enrollments
+            .Include(e => e.Applicant)
+            .AnyAsync(e => e.Applicant.DocumentNumber == documentNumber && e.AcademicProgramID == academicProgramId);
+    }
+
+    public async Task<bool> ApplicantExistsAsync(string documentNumber)
+    {
+        return await _context.Applicant
+            .AnyAsync(a => a.DocumentNumber == documentNumber);
+    }
+
+    public async Task<Applicant?> GetApplicantByDocumentAsync(string documentNumber)
+    {
+        return await _context.Applicant
+            .FirstOrDefaultAsync(a => a.DocumentNumber == documentNumber);
+    }
 }
