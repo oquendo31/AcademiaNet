@@ -18,4 +18,8 @@ public class Applicant
     [Required]
     [MaxLength(100)]
     public string? DocumentNumber { get; set; }
+
+    public ICollection<Enrollment>? Enrollments { get; set; }
+
+    public int EnrollmentCount => Enrollments == null ? 0 : Enrollments.Count;
 }

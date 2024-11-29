@@ -38,8 +38,8 @@ public class User : IdentityUser
     public ICollection<ExamResult>? ExamResults { get; set; }
     public int ExamResultCount => ExamResults == null ? 0 : ExamResults.Count;
 
-    public ICollection<Enrollment>? Enrollments { get; set; }
-    public int EnrollmentCount => Enrollments == null ? 0 : Enrollments.Count;
+    //public ICollection<Enrollment>? Enrollments { get; set; }
+    //public int EnrollmentCount => Enrollments == null ? 0 : Enrollments.Count;
 
     public ICollection<Notification>? Notifications { get; set; }
     public int NotificationCount => Notifications == null ? 0 : Notifications.Count;

@@ -13,7 +13,11 @@ public class Enrollment
 
     [Required]
     public int AcademicProgramID { get; set; }
+
     public AcademicProgram AcademicProgram { get; set; } = null!;
+
+    [Required]
     public int ApplicantId { get; set; }
+
     public Applicant Applicant { get; set; } = null!;
 }
