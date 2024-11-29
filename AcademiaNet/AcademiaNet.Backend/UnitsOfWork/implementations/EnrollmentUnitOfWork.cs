@@ -25,5 +25,21 @@ public class EnrollmentUnitOfWork: GenericUnitOfWork<Enrollment>, IEnrollmentUni
         return await _EnrollmentRepository.EnrollmentExistsAsync(documentNumber, academicProgramId);
     }
 
+    public async Task<bool> ApplicantHasEnrollmentInProgramAsync(string documentNumber, int academicProgramId)
+    {
+        return await _EnrollmentRepository.ApplicantHasEnrollmentInProgramAsync(documentNumber, academicProgramId);
+    }
+
+    public async Task<bool> ApplicantExistsAsync(string documentNumber)
+    {
+        return await _EnrollmentRepository.ApplicantExistsAsync(documentNumber);
+    }
+
+    public async Task<Applicant?> GetApplicantByDocumentAsync(string documentNumber)
+    {
+        return await _EnrollmentRepository.GetApplicantByDocumentAsync(documentNumber);
+    }
+
+
 }
 
