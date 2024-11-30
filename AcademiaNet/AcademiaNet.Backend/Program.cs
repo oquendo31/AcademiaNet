@@ -24,18 +24,18 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
 {
-  c.SwaggerDoc("v1", new OpenApiInfo { Title = "Orders Backend", Version = "v1" });
-  c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-  {
-    Description = @"JWT Authorization header using the Bearer scheme. <br /> <br />
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Orders Backend", Version = "v1" });
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = @"JWT Authorization header using the Bearer scheme. <br /> <br />
                       Enter 'Bearer' [space] and then your token in the text input below.<br /> <br />
                       Example: 'Bearer 12345abcdef'<br /> <br />",
-    Name = "Authorization",
-    In = ParameterLocation.Header,
-    Type = SecuritySchemeType.ApiKey,
-    Scheme = "Bearer"
-  });
-  c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
       {
         {
           new OpenApiSecurityScheme
@@ -74,23 +74,22 @@ builder.Services.AddScoped(typeof(IInstitutionsUnitOfWork), typeof(InstitutionsU
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IUsersUnitOfWork, UsersUnitOfWork>();
 
-
 builder.Services.AddScoped<IExamsRepository, ExamsRepository>();
 builder.Services.AddScoped<IExamsUnitOfWorks, ExamsUnitOfWork>();
 
 builder.Services.AddIdentity<User, IdentityRole>(x =>
 {
-  x.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
-  x.SignIn.RequireConfirmedEmail = true;
-  x.User.RequireUniqueEmail = true;
-  x.Password.RequireDigit = false;
-  x.Password.RequiredUniqueChars = 0;
-  x.Password.RequireLowercase = false;
-  x.Password.RequireNonAlphanumeric = false;
-  x.Password.RequireUppercase = false;
-  x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // BLoqueo de 5 minutos
-  x.Lockout.MaxFailedAccessAttempts = 3; // Cuando  el usuario ingrese la contase�a mal 3 veces lo bloquemaos 5 minutos
-  x.Lockout.AllowedForNewUsers = true;
+    x.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
+    x.SignIn.RequireConfirmedEmail = true;
+    x.User.RequireUniqueEmail = true;
+    x.Password.RequireDigit = false;
+    x.Password.RequiredUniqueChars = 0;
+    x.Password.RequireLowercase = false;
+    x.Password.RequireNonAlphanumeric = false;
+    x.Password.RequireUppercase = false;
+    x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // BLoqueo de 5 minutos
+    x.Lockout.MaxFailedAccessAttempts = 3; // Cuando  el usuario ingrese la contase�a mal 3 veces lo bloquemaos 5 minutos
+    x.Lockout.AllowedForNewUsers = true;
 })
     .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();
@@ -98,24 +97,24 @@ builder.Services.AddIdentity<User, IdentityRole>(x =>
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(x => x.TokenValidationParameters = new TokenValidationParameters
     {
-      ValidateIssuer = false,
-      ValidateAudience = false,
-      ValidateLifetime = true,
-      ValidateIssuerSigningKey = true,
-      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["jwtKey"]!)),
-      ClockSkew = TimeSpan.Zero
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["jwtKey"]!)),
+        ClockSkew = TimeSpan.Zero
     });
 
 builder.Services.AddCors(options =>
 {
-  options.AddPolicy("AllowSpecificOrigins",
-      builder =>
-      {
-        builder.WithOrigins("http://127.0.0.1:5173", "http://localhost:5173", "https://juancarrasquilla360.github.io/AcademiaNet-front/")
-                 .AllowAnyHeader()
-                 .AllowAnyMethod()
-                 .AllowCredentials();
-      });
+    options.AddPolicy("AllowSpecificOrigins",
+        builder =>
+        {
+            builder.WithOrigins("http://127.0.0.1:5173", "http://localhost:5173", "https://juancarrasquilla360.github.io", "https://delightful-wave-0d253660f.4.azurestaticapps.net", "https://delightful-wave-0d253660f.4.azurestaticapps.net/#")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .AllowCredentials();
+        });
 });
 
 builder.Services.AddScoped<IMailHelper, MailHelper>();
@@ -126,16 +125,16 @@ SeedData(app);
 
 void SeedData(WebApplication app)
 {
-  var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
-  using var scope = scopedFactory!.CreateScope();
-  var service = scope.ServiceProvider.GetService<SeedDb>();
-  service!.SeedAsync().Wait();
+    var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+    using var scope = scopedFactory!.CreateScope();
+    var service = scope.ServiceProvider.GetService<SeedDb>();
+    service!.SeedAsync().Wait();
 }
 
 if (app.Environment.IsDevelopment())
 {
-  app.UseSwagger();
-  app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 app.UseCors(x => x
     .AllowAnyMethod()

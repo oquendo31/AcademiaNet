@@ -8,4 +8,10 @@ public interface IEnrollmentRepository
     Task<ActionResponse<IEnumerable<Enrollment>>> GetAsync();
     Task<IEnumerable<Enrollment>> GetComboAsync();
     Task<Enrollment> AddEnrollmentAsync(Enrollment enrollment);
+    Task<bool> EnrollmentExistsAsync(string documentNumber, int academicProgramId);
+    Task<bool> ApplicantHasEnrollmentInProgramAsync(string documentNumber, int academicProgramId);
+    Task<bool> ApplicantExistsAsync(string documentNumber);
+    Task<Applicant?> GetApplicantByDocumentAsync(string documentNumber);
+
+
 }

@@ -35,6 +35,15 @@ public class AccountsController : ControllerBase
         _InstitutionsUnitOfWork = InstitutionsUnitOfWork;
     }
 
+
+    [HttpOptions]
+    public IActionResult HandlePreflight()
+    {
+        return Ok();
+    }
+
+
+
     /// <summary>
     /// Recover Password Async
     /// </summary>
