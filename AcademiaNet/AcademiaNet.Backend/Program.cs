@@ -111,7 +111,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigins",
         builder =>
         {
-            builder.WithOrigins("http://127.0.0.1:5173", "http://localhost:5173", "https://juancarrasquilla360.github.io", "https://delightful-wave-0d253660f.4.azurestaticapps.net", "https://delightful-wave-0d253660f.4.azurestaticapps.net/#")
+            builder.WithOrigins("http://127.0.0.1:5173", "http://localhost:5173", "https://juancarrasquilla360.github.io", "https://delightful-wave-0d253660f.4.azurestaticapps.net", "https://delightful-wave-0d253660f.4.azurestaticapps.net")
                    .AllowAnyHeader()
                    .AllowAnyMethod()
                    .AllowCredentials();
